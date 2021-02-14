@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "803332362861",
+    "project_id": "fizyo-14a55",
+    "storage_bucket": "fizyo-14a55.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:803332362861:android:f4f7a41977880cd7036564",
+        "android_client_info": {
+          "package_name": "com.example.doctor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "803332362861-v5o0shmgmcv6bii6a5k976tgm9l0pqft.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.doctor",
+            "certificate_hash": "e33afb0833164fc2f33d4e0c43d8966650579622"
+          }
+        },
+        {
+          "client_id": "803332362861-8el5t5s192dmsr55g5i1ut3h3q5rgn74.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAr7omGx8biDdTDrO4rYc_2mTEmEf8eLx0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "803332362861-8el5t5s192dmsr55g5i1ut3h3q5rgn74.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
