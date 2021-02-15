@@ -38,6 +38,7 @@ dependencies:
   form_field_validator: ^1.0.1
   cloud_firestore: ^0.16.0
   font_awesome_flutter: ^8.11.0
+  firebase_messaging:
 
 dev_dependencies:
   flutter_test:

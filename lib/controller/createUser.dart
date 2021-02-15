@@ -1,11 +1,13 @@
   import 'package:doctor/models/userDetails.dart';
   import 'package:firebase_auth/firebase_auth.dart';
   import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
   import 'package:provider/provider.dart';
 
   class CreateUser {
     FirebaseAuth _auth = FirebaseAuth.instance;
     FirebaseFirestore _firestore = FirebaseFirestore.instance;
+    FirebaseMessaging fcm= FirebaseMessaging();
 
     Future<bool> logInUser(context,String email, String password) async {
       try {
@@ -41,6 +43,7 @@
     }
     Future<bool> RegisterPatient(String username, String pass, String height, String email, String dOB, String weight, String disease) async {
       try {
+        final fcmToken=await fcm.getToken(); //Token get
         await _auth
             .createUserWithEmailAndPassword(email: email, password: pass)
             .then((value) async {
@@ -51,6 +54,7 @@
             'height': height,
             'username': username,
             'weight': weight,
+            'token':fcmToken
           });
         });
         return true;
