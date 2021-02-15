@@ -1,9 +1,11 @@
 import 'package:doctor/controller/createUser.dart';
+import 'package:doctor/models/userDetails.dart';
 import 'package:doctor/screens/allExercises.dart';
 import 'package:doctor/screens/dashboard.dart';
 import 'package:doctor/screens/profile.dart';
 import 'package:doctor/singIn.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class Draweritem extends StatefulWidget {
   @override
@@ -24,14 +26,14 @@ class _DraweritemState extends State<Draweritem> {
               child: UserAccountsDrawerHeader(
                 arrowColor: Colors.white,
                 accountName: Text(
-                  'Shaikh Mubashir',
+                  Provider.of<UserDetails>(context,listen: false).getUserName,
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 26.0,
                     color: Colors.white
                   ),
                 ),
-                accountEmail: Text('Patient number',style: TextStyle(
+                accountEmail: Text(Provider.of<UserDetails>(context,listen: false).getEmail,style: TextStyle(
                   fontSize: 21,
                   color: Colors.white
                 ),),

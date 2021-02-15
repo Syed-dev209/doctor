@@ -11,8 +11,8 @@ import 'package:provider/provider.dart';
 void main()async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  PushNotifications fcm=PushNotifications();
-  fcm.initialize();
+ //PushNotifications fcm=PushNotifications();
+  //fcm.initialize();
   runApp(
       MyApp()
   );
