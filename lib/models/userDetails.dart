@@ -13,6 +13,7 @@ class UserDetails extends ChangeNotifier{
     _dob=dob;
     _disease=disease;
     _docId=docId;
+    print(_dob);
     notifyListeners();
   }
   setUserExeDocId(String docId){

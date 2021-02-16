@@ -79,13 +79,6 @@ class _DraweritemState extends State<Draweritem> {
             },
           ),
           ListTile(
-            leading: Icon(Icons.question_answer),
-            title: Text('TERMS AND CONDITIONS',style: TextStyle(
-              fontSize: 18,
-
-            ),),
-          ),
-          ListTile(
             leading: Icon(Icons.power_settings_new),
             title: Text('LOGOUT',style: TextStyle(
               fontSize: 18,

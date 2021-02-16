@@ -1,3 +1,4 @@
+import 'package:doctor/components/alertBox.dart';
 import 'package:flutter/material.dart';
 import 'components/datePicker.dart';
 import 'dart:io' show Platform;
@@ -23,7 +24,7 @@ class _RegistrerState extends State<Registrer> {
   TextEditingController _disease=TextEditingController();
   TextEditingController _email=TextEditingController();
   CreateUser _createUser;
-
+  AlertBoxes _alertBoxes;
   @override
   Widget build(BuildContext context) {
     double deviceHeight = MediaQuery.of(context).size.height;
@@ -295,7 +296,7 @@ class _RegistrerState extends State<Registrer> {
                         SizedBox(height: deviceHeight * 0.2),
                         RaisedButton(
                             padding:
-                            EdgeInsets.symmetric(horizontal: 60, vertical: 20),
+                            EdgeInsets.symmetric(horizontal: 40, vertical: 20),
                             child: Text(
                               'Register',
                               style: TextStyle(color: Colors.white, fontSize: 20.0),
@@ -316,7 +317,11 @@ class _RegistrerState extends State<Registrer> {
                                   Navigator.push(context, MaterialPageRoute(builder: (context)=>SignIn()));
                                 }
                                 else{
-                                  print('gfff gayi');
+                                  _alertBoxes=AlertBoxes();
+                                  progress.dismiss();
+                                  _alertBoxes.simpleAlertBox(context, Text('Something went wrong'), Text('Please try again later'), (){
+                                    Navigator.pop(context);
+                                  });
                                 }
                               }
                             }),

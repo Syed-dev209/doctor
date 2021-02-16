@@ -4,6 +4,7 @@ import 'package:doctor/register.dart';
 import 'package:doctor/registerDoctor.dart';
 import 'package:doctor/screens/adminScreens/adminDashboard.dart';
 import 'package:doctor/screens/dashboard.dart';
+import 'package:doctor/screens/forgotPassword.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_progress_hud/flutter_progress_hud.dart';
 import 'package:form_field_validator/form_field_validator.dart';
@@ -169,7 +170,9 @@ class _SignInState extends State<SignIn> {
                                           fontSize: 17,
                                           color: Theme.of(context).accentColor),
                                     ),
-                                    onPressed: () {}),
+                                    onPressed: () {
+                                      Navigator.push(context, MaterialPageRoute(builder: (context)=>ForgotPassword()));
+                                    }),
                               ],
                             ),
                             Row(
@@ -243,6 +246,7 @@ class _SignInState extends State<SignIn> {
                                                   builder: (context) =>
                                                       Dashboard()));
                                         } else {
+                                          progress.dismiss();
                                           _alertBoxes = AlertBoxes();
                                           _alertBoxes.simpleAlertBox(
                                               context,
@@ -285,6 +289,7 @@ class _SignInState extends State<SignIn> {
                                                   builder: (context) =>
                                                       AdminDashboard()));
                                         } else {
+                                          progress.dismiss();
                                           _alertBoxes = AlertBoxes();
                                           _alertBoxes.simpleAlertBox(
                                               context,
@@ -292,7 +297,7 @@ class _SignInState extends State<SignIn> {
                                               Text(
                                                   'Something went wrong.\nMake sure you entered correct details.'),
                                               () {
-                                            Navigator.pop(context);
+                                            Navigator.push(context, MaterialPageRoute(builder: (context)=>SignIn()));
                                           });
                                         }
                                       } else {

@@ -46,152 +46,86 @@ class _ProfileState extends State<Profile> {
 
   @override
   Widget build(BuildContext context) {
-    // String text = Provider.of<UserDetails>(context).getUserName??'Khattak';
     return Scaffold(
       appBar: AppBar(
         title: Text('Profile'),
         centerTitle: true,
-        backgroundColor: Colors.white,
+        //backgroundColor: Colors.white,
       ),
       drawer: widget.admin ? AdminDrawer() : Draweritem(),
       body: SafeArea(
-        child: SingleChildScrollView(child: Consumer<UserDetails>(
+        child: SingleChildScrollView(
+          child: Consumer<UserDetails>(
           builder: (context, data, child) {
-            return Container(
-              height: MediaQuery.of(context).size.height * 0.7,
-              child: Center(
-                child: Container(
-                  height: 500.0,
-                  child: Stack(
-                    fit: StackFit.loose,
-                    children: [
-                      Align(
-                        alignment: Alignment.bottomCenter,
-                        child: Card(
-                            elevation: 10,
-                            child: Container(
-                              height: 300,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.stretch,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Text(
-                                        data.getUserName,
-                                        style: TextStyle(
-                                            fontSize: 25,
-                                            fontWeight: FontWeight.w400),
-                                      ),
-                                      IconButton(
-                                        icon: Icon(Icons.edit),
-                                        onPressed: () async {
-                                          showAlertDialog(context, username);
-                                        },
-                                      )
-                                    ],
-                                  ),
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    children: [
-                                      SizedBox(
-                                        height: 31.0,
-                                        width: 300,
-                                        child: Divider(
-                                          color: Colors.black87,
-                                        ),
-                                      ),
-                                      Text(
-                                        data.getEmail,
-                                        style: TextStyle(
-                                            fontSize: 20,
-                                            color: Colors.black38),
-                                      ),
-                                      SizedBox(
-                                        height: 8,
-                                      ),
-                                      Text(
-                                        data.getWeight,
-                                        style: TextStyle(
-                                            fontSize: 20,
-                                            color: Colors.black38),
-                                      ),
-
-                                      SizedBox(
-                                        height: 8,
-                                      ),
-                                      Text(
-                                        data.getHeight,
-                                        style: TextStyle(
-                                            fontSize: 20,
-                                            color: Colors.black38),
-                                      ),
-                                      SizedBox(
-                                        height: 5,
-                                      ),
-                                      Text(
-                                        data.getDisease,
-                                        style: TextStyle(
-                                            fontSize: 20,
-                                            color: Colors.black38),
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            )),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(bottom: 130.0),
-                        child: Center(
-                          child: Container(
-                            width: 110.0,
-                            height: 120.0,
-                            child: Stack(
-                              children: [
-                                CircleAvatar(
-                                    radius: 55.0,
-                                    backgroundImage: imagePicked
-                                        ? FileImage(selectedImage)
-                                        : NetworkImage(
-                                            'http://www.pngmart.com/files/7/Red-Smoke-Transparent-Images-PNG.png')
-                                    //  backgroundColor: Colors.white,
-
-                                    ),
-                                Padding(
-                                  padding: EdgeInsets.only(bottom: 20.0),
-                                  child: Align(
-                                    alignment: Alignment.bottomRight,
-                                    child: GestureDetector(
-                                      onTap: () async {
-                                        _pickImage = PickImage();
-                                        final image =
-                                            await _pickImage.chooseImage();
-                                        setState(() {
-                                          imagePicked = true;
-                                          selectedImage = image;
-                                        });
-                                      },
-                                      child: CircleAvatar(
-                                        backgroundColor: Colors.red,
-                                        child: Icon(
-                                          Icons.camera_alt,
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                )
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
+            return Padding(
+              padding: EdgeInsets.symmetric(vertical: 10.0,horizontal: 10.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text('My Details',style: TextStyle(
+                    fontSize: 30.0,
+                  ),),
+                  Divider(
+                    color: Theme.of(context).primaryColor,
+                    thickness: 2,
                   ),
-                ),
+                  SizedBox(height: 5.0,),
+                  Text('Username',style: TextStyle(
+                    fontSize: 18.0,
+                    color: Colors.black26
+                  ),),
+                  Text(data.getUserName,style: TextStyle(
+                    fontSize: 22.0
+                  ),
+                  ),
+                  SizedBox(height: 10.0,),
+
+                  Text('Email',style: TextStyle(
+                      fontSize: 18.0,
+                      color: Colors.black26
+                  ),),
+                  Text(data.getEmail,style: TextStyle(
+                      fontSize: 22.0
+                  ),
+                  ),
+                  SizedBox(height: 10.0,),
+                  Text('Date of Birth',style: TextStyle(
+                      fontSize: 18.0,
+                      color: Colors.black26
+                  ),),
+                  Text(DateTime.parse(data.getDOB).toLocal().toString().split(' ')[0],style: TextStyle(
+                      fontSize: 22.0
+                  ),
+                  ),
+                  SizedBox(height: 10.0,),
+                  Text('Weight',style: TextStyle(
+                      fontSize: 18.0,
+                      color: Colors.black26
+                  ),),
+                  Text(data.getWeight,style: TextStyle(
+                      fontSize: 22.0
+                  ),
+                  ),
+                  SizedBox(height: 10.0,),
+                  Text('Height',style: TextStyle(
+                      fontSize: 18.0,
+                      color: Colors.black26
+                  ),),
+                  Text(data.getHeight,style: TextStyle(
+                      fontSize: 22.0
+                  ),
+                  ),
+                  SizedBox(height: 10.0,),
+                  Text('Disease',style: TextStyle(
+                      fontSize: 18.0,
+                      color: Colors.black26
+                  ),),
+                  Text(data.getDisease,style: TextStyle(
+                      fontSize: 22.0
+                  ),
+                  ),
+                  SizedBox(height: 10.0,),
+                ],
               ),
             );
           },

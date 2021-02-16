@@ -73,7 +73,7 @@ class _AdminDashboardState extends State<AdminDashboard> {
                     ),
                   ),
                 ),
-                SliverFixedExtentList(
+                SliverList(
                     delegate: SliverChildListDelegate([
                       StreamBuilder(
                         stream: _firestore.collection('exercises').snapshots(),
@@ -101,8 +101,8 @@ class _AdminDashboardState extends State<AdminDashboard> {
                           }
                       )
                     ]),
-                    itemExtent: MediaQuery.of(context).size.height*0.7)
-              ],
+                    //itemExtent: MediaQuery.of(context).size.height*0.8)
+                ) ],
             )),
       ),
     );

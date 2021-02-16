@@ -67,17 +67,17 @@ class _AdminDrawerState extends State<AdminDrawer> {
                   MaterialPageRoute(builder: (context) => PatientList()));
             },
           ),
-          ListTile(
-            leading: Icon(Icons.face_unlock_sharp),
-            title: Text('PROFILE',style: TextStyle(
-              fontSize: 18,
-
-            ),),
-            onTap: () {
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => Profile(admin: true,)));
-            },
-          ),
+          // ListTile(
+          //   leading: Icon(Icons.face_unlock_sharp),
+          //   title: Text('PROFILE',style: TextStyle(
+          //     fontSize: 18,
+          //
+          //   ),),
+          //   onTap: () {
+          //     Navigator.push(
+          //         context, MaterialPageRoute(builder: (context) => Profile(admin: true,)));
+          //   },
+          // ),
           ListTile(
             leading: Icon(Icons.home_filled),
             title: Text('ADD AN EXERCISE',style: TextStyle(
@@ -88,13 +88,7 @@ class _AdminDrawerState extends State<AdminDrawer> {
               Navigator.push(context, MaterialPageRoute(builder: (context)=> UploadVideo(edit: false,)));
             },
           ),
-          ListTile(
-            leading: Icon(Icons.question_answer),
-            title: Text('TERMS AND CONDITIONS',style: TextStyle(
-              fontSize: 18,
 
-            ),),
-          ),
           ListTile(
             leading: Icon(Icons.power_settings_new),
             title: Text('LOGOUT',style: TextStyle(

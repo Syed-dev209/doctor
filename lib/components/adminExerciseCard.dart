@@ -20,8 +20,7 @@ class _AdminExerciseCardState extends State<AdminExerciseCard> {
   void initState(){
     // TODO: implement initState
     super.initState();
-    Provider.of<ExerciseDescription>(context,listen:false).setExerciseDetails(widget.title, widget.description, widget.days, widget.startDate);
-    Provider.of<ExerciseDescription>(context,listen: false).setExerciseDocId(widget.docId);
+
   }
 
 
@@ -30,6 +29,8 @@ class _AdminExerciseCardState extends State<AdminExerciseCard> {
     DateTime date=DateTime.parse(widget.startDate);
     return GestureDetector(
       onTap: (){
+        Provider.of<ExerciseDescription>(context,listen:false).setExerciseDetails(widget.title, widget.description, widget.days, widget.startDate);
+        Provider.of<ExerciseDescription>(context,listen: false).setExerciseDocId(widget.docId);
         Navigator.push(context, MaterialPageRoute(builder: (context)=>ExerciseDetailsAndReview()));
       } ,
       child: Card(

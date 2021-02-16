@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class ExerciseCard extends StatefulWidget {
-  String title, description, startDate, days, docId, completed;
+  String  docId, completed;
   ExerciseCard({this.docId,this.completed});
 
   @override
@@ -14,18 +14,24 @@ class ExerciseCard extends StatefulWidget {
 }
 
 class _ExerciseCardState extends State<ExerciseCard> {
-
+  String title, description, startDate, days;
   FirebaseFirestore _firestore=FirebaseFirestore.instance;
   DateTime date=DateTime.now();
+  bool loaded=false;
   var getId,data;
   fillData()async{
     print(widget.docId);
     getId= await _firestore.collection('patients').doc(Provider.of<UserDetails>(context,listen: false).getDocId).collection('exercises').doc(widget.docId).get();
     data = await _firestore.collection('exercises').doc(getId.data()['exerciseDocID']).get();
     print(data.data()['title']);
-    Provider.of<ExerciseDescription>(context,listen: false).setExerciseDetails(data.data()['title'], data.data()['description'], data.data()['days']??' ', data.data()['startDate'])??'2021-02-07 06:27:19.893276';
-    date=DateTime.parse(Provider.of<ExerciseDescription>(context,listen: false).getExerciseDetails['startDate']??' ');
+    title=data.data()['title'];
+    description=data.data()['description'];
+    days= data.data()['days'];
+    startDate=data.data()['startDate'];
+
+    date=DateTime.parse(startDate);
     setState(() {
+      loaded=true;
     });
   }
 
@@ -42,8 +48,9 @@ class _ExerciseCardState extends State<ExerciseCard> {
 
   @override
   Widget build(BuildContext context){
-    return GestureDetector(
+    return loaded?GestureDetector(
       onTap: (){
+        Provider.of<ExerciseDescription>(context,listen: false).setExerciseDetails(title,description, days, startDate);
         Provider.of<UserDetails>(context,listen: false).setUserExeDocId(widget.docId);
         Navigator.push(context, MaterialPageRoute(builder: (context)=>ExerciseDetails(docID: data.id,)));
       } ,
@@ -90,7 +97,7 @@ class _ExerciseCardState extends State<ExerciseCard> {
                 ),
                 Expanded(
                   child: Text(
-                    Provider.of<ExerciseDescription>(context,listen: false).getExerciseDetails['title']??' ',
+                    title,
                     style: TextStyle(
                         color: Colors.white,
                         fontSize: 26.0,
@@ -102,7 +109,7 @@ class _ExerciseCardState extends State<ExerciseCard> {
                 ),
                 Expanded(
                   child: Text(
-                    Provider.of<ExerciseDescription>(context,listen: false).getExerciseDetails['description']??' ',
+                    description,
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 21.0,
@@ -140,7 +147,16 @@ class _ExerciseCardState extends State<ExerciseCard> {
               ],
             )),
       ),
-    );
+    ):
+        Container(
+          height: 300.0,
+          width: MediaQuery.of(context).size.width,
+          child: Center(
+              child: CircularProgressIndicator(
+                backgroundColor: Colors.black,
+              )
+          ),
+        );
   }
 }
 

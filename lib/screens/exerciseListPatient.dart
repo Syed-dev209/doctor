@@ -24,8 +24,9 @@ class _PatientExerciseListState extends State<PatientExerciseList> {
     print(completed);
     int i = completed.lastIndexOf('true');
     print('$i');
+    print(exerciseList.length);
     if(exerciseList.length==1) {
-      exerciseList[i].completed = 'true';
+      exerciseList[0].completed = 'true';
     }
     else{
       exerciseList[i + 1].completed = 'true';

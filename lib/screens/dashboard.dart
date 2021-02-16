@@ -71,7 +71,7 @@ class _DashboardState extends State<Dashboard> {
                 ),
               ),
             ),
-            SliverFixedExtentList(
+            SliverList(
                 delegate: SliverChildListDelegate([
                   // ExerciseCard(onPressed: (){
                   //   Navigator.push(context, MaterialPageRoute(builder: (context)=>ExerciseDetails()));
@@ -112,7 +112,7 @@ class _DashboardState extends State<Dashboard> {
                   )
 
                 ]),
-                itemExtent: MediaQuery.of(context).size.height*0.7)
+            )
           ],
         )),
       ),

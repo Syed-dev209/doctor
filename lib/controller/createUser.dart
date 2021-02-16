@@ -19,6 +19,20 @@ import 'package:firebase_messaging/firebase_messaging.dart';
       }
     }
 
+    Future<bool> changePassword(String email) async{
+      try {
+        // EmailAuthCredential credential = EmailAuthProvider.credential(
+        //     email: email, password: password);
+        // await _auth.currentUser.reauthenticateWithCredential(
+        //     credential);
+        await _auth.sendPasswordResetEmail(email: email);
+        return true;
+      }
+      catch(e){
+        return false;
+      }
+    }
+
     Future<bool> checkUser(String email)async{
       try {
         String id;
@@ -95,8 +109,9 @@ import 'package:firebase_messaging/firebase_messaging.dart';
           height=data.data()['height'];
           weight=data.data()['weight'];
           disease=data.data()['disease'];
-          dob=data.data()['dob'];
+          dob=data.data()['dateOBirth'];
           username=data.data()['username'];
+          print('at contorller date is :- $dob');
         }
       Provider.of<UserDetails>(context,listen: false).setUserDetails(email, username, height,weight,dob,disease,docId);
     }

@@ -2,6 +2,7 @@ import 'package:doctor/components/adminDrawer.dart';
 import 'package:doctor/components/videoPlayer.dart';
 import 'package:doctor/models/exerciseDescriptionModel.dart';
 import 'package:doctor/screens/adminScreens/addExercise.dart';
+import 'package:doctor/screens/adminScreens/adminDashboard.dart';
 import 'package:doctor/screens/adminScreens/exerciseDetails.dart';
 import 'package:doctor/screens/adminScreens/exerciseList.dart';
 import 'package:doctor/screens/exerciseDetails.dart';
@@ -25,7 +26,7 @@ class _ExerciseDetailsAndReviewState extends State<ExerciseDetailsAndReview> {
       drawer: AdminDrawer(),
       body: WillPopScope(
         onWillPop: ()async{
-          Navigator.push(context, MaterialPageRoute(builder: (context)=>UploadVideo(edit: false,)));
+          Navigator.push(context, MaterialPageRoute(builder: (context)=>AdminDashboard()));
           return true;
         },
         child: SafeArea(

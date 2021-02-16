@@ -136,8 +136,7 @@ class _UploadExerciseState extends State<UploadExercise> {
                                             'Upload a video',
                                             style: TextStyle(
                                                 fontSize: 19,
-                                                color: Theme.of(context)
-                                                    .accentColor),
+                                                color: Colors.white),
                                           )
                                         ],
                                       ),
@@ -174,6 +173,7 @@ class _UploadExerciseState extends State<UploadExercise> {
                                         'Change Video',
                                         style: TextStyle(
                                           fontSize: 18,
+                                          color: Colors.white
                                         ),
                                       ),
                                       color: Theme.of(context).primaryColor,
@@ -296,6 +296,7 @@ class _UploadExerciseState extends State<UploadExercise> {
                                         'Update exercise',
                                         style: TextStyle(
                                           fontSize: 20,
+                                          color: Colors.white
                                         ),
                                       ),
                                       color: Theme.of(context).primaryColor,
@@ -405,6 +406,7 @@ class _UploadExerciseState extends State<UploadExercise> {
                                         'Add next exercise',
                                         style: TextStyle(
                                           fontSize: 20,
+                                          color: Colors.white
                                         ),
                                       ),
                                       color: Theme.of(context).primaryColor,
@@ -437,6 +439,7 @@ class _UploadExerciseState extends State<UploadExercise> {
                                         'Proceed to select patients',
                                         style: TextStyle(
                                           fontSize: 20,
+                                          color: Colors.white
                                         ),
                                       ),
                                       color: Theme.of(context).primaryColor,
