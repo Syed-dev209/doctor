@@ -1,9 +1,11 @@
 import 'package:doctor/models/doctorDetails.dart';
 import 'package:doctor/models/exerciseDescriptionModel.dart';
 import 'package:doctor/models/userDetails.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:doctor/service/pushNotificationService.dart';
 import 'package:doctor/singIn.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -11,8 +13,8 @@ import 'package:provider/provider.dart';
 void main()async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
- //PushNotifications fcm=PushNotifications();
-  //fcm.initialize();
+ PushNotifications fcm=PushNotifications();
+  fcm.initialize();
   runApp(
       MyApp()
   );

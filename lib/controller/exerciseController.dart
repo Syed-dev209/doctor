@@ -33,6 +33,35 @@ class CreateExercise {
       return false;
     }
   }
+  Future<bool> deleteExercise(String docId)async{
+    try {
+      final users = await _firestore.collection('exercises')
+          .doc(docId)
+          .collection('patients')
+          .get();
+      String email;
+      for (var user in users.docs) {
+        email = user.data()['email'];
+        final data = await _firestore.collection('patients').where(
+            'email', isEqualTo: email).get();
+        for (var a in data.docs) {
+          final del = await _firestore.collection('patients').doc(a.id)
+              .collection('exercises').where('exerciseDocID', isEqualTo: docId)
+              .get();
+          for (var b in del.docs) {
+            await _firestore.collection('patients').doc(a.id).collection(
+                'exercises').doc(b.id).delete();
+          }
+        }
+      }
+
+      await _firestore.collection('exercises').doc(docId).delete();
+      return true;
+    }
+    catch(e){
+      return false;
+    }
+  }
 
   Future<bool> updateDescription(Map<String,String> exerciseDetails,String docId)async{
     try{

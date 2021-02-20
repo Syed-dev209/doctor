@@ -100,7 +100,19 @@ class PatientTile extends StatelessWidget {
     return ListTile(
       onTap: () {
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => PatientProfile()));
+            context,
+            MaterialPageRoute(
+                builder: (context) => PatientProfile(
+                      name: name,
+                      email: email,
+                      height: height,
+                      weight: weight,
+                      dob: DateTime.parse(dob)
+                          .toLocal()
+                          .toString()
+                          .split(' ')[0],
+                      disease: disease,
+                    )));
       },
       leading: CircleAvatar(
         radius: 35,

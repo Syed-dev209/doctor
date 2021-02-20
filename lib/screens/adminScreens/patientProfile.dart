@@ -29,15 +29,50 @@ class PatientProfile extends StatelessWidget {
                 ),
                 ),
                 SizedBox(height: 15.0,),
-                Text('Email:- '+email),
-                SizedBox(height: 5.0,),
-                Text('Date of Birth:- '+dob),
-                SizedBox(height: 5.0,),
-                Text('Height:- '+height),
-                SizedBox(height: 5.0,),
-                Text('Weight:- '+weight),
-                SizedBox(height: 5.0,),
-                Text('Disease:- '+disease)
+                Text('Email',style: TextStyle(
+                    fontSize: 18.0,
+                    color: Colors.black26
+                ),),
+                Text(email,style: TextStyle(
+                    fontSize: 22.0
+                ),
+                ),
+                SizedBox(height: 9.0,),
+                Text('Date of Birth',style: TextStyle(
+                    fontSize: 18.0,
+                    color: Colors.black26
+                ),),
+                Text(dob,style: TextStyle(
+                    fontSize: 22.0
+                ),
+                ),
+                SizedBox(height: 9.0,),
+                Text('Height',style: TextStyle(
+                    fontSize: 18.0,
+                    color: Colors.black26
+                ),),
+                Text(height,style: TextStyle(
+                    fontSize: 22.0
+                ),
+                ),
+                SizedBox(height: 9.0,),
+                Text('Weight',style: TextStyle(
+                    fontSize: 18.0,
+                    color: Colors.black26
+                ),),
+                Text(weight,style: TextStyle(
+                    fontSize: 22.0
+                ),
+                ),
+                SizedBox(height: 9.0,),
+                Text('Disease',style: TextStyle(
+                    fontSize: 18.0,
+                    color: Colors.black26
+                ),),
+                Text(disease,style: TextStyle(
+                    fontSize: 22.0
+                ),
+                ),
               ],
             ),
           ),

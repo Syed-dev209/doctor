@@ -10,6 +10,8 @@ import 'package:flutter_progress_hud/flutter_progress_hud.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:flutter/material.dart';
 import 'controller/createUser.dart';
+import 'service/pushNotificationService.dart';
+import 'service/pushNotificationService.dart';
 
 class SignIn extends StatefulWidget {
   @override
@@ -315,6 +317,13 @@ class _SignInState extends State<SignIn> {
                                     }
                                   }
                                 }),
+                            RaisedButton(
+                              child: Text('send'),
+                                onPressed: ()async{
+                              PushNotifications fcm =PushNotifications();
+                             await fcm.sendAndRetrieveMessage();
+                            }
+                            ),
                             SizedBox(
                               width: 250,
                               height: 25,

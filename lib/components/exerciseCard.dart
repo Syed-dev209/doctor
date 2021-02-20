@@ -5,6 +5,8 @@ import 'package:doctor/screens/exerciseDetails.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../models/userDetails.dart';
+
 class ExerciseCard extends StatefulWidget {
   String  docId, completed;
   ExerciseCard({this.docId,this.completed});
@@ -49,6 +51,7 @@ class _ExerciseCardState extends State<ExerciseCard> {
   @override
   Widget build(BuildContext context){
     return loaded?GestureDetector(
+
       onTap: (){
         Provider.of<ExerciseDescription>(context,listen: false).setExerciseDetails(title,description, days, startDate);
         Provider.of<UserDetails>(context,listen: false).setUserExeDocId(widget.docId);
