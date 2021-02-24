@@ -5,10 +5,11 @@ import 'dart:convert';
 import 'package:http/http.dart'as http;
 
 class PushNotifications{
-  FirebaseMessaging fcm= FirebaseMessaging();
 
+  final String serverToken = 'AAAAuwpXEm0:APA91bFPtR2VbY9eBJbw66r_xe1ATMIbRzo8VysQ-8LAKIHbHh2kb1m5X6xLU17AdDTCFdhwHDn33K5zljeyzuZZFMVzAKti-0ClMlyx8cD_u8tXcg3R7lDRJEfxIEa2HBEQvr9PSfVN';
+  final FirebaseMessaging firebaseMessaging = FirebaseMessaging();
   void initialize(){
-    fcm.configure(
+    firebaseMessaging.configure(
       onMessage: (Map<String, dynamic> message) async {
         print("onMessage: $message");
         //_showItemDialog(message);
@@ -24,9 +25,9 @@ class PushNotifications{
     );
 
   }
-  final String serverToken = 'AAAAuwpXEm0:APA91bFPtR2VbY9eBJbw66r_xe1ATMIbRzo8VysQ-8LAKIHbHh2kb1m5X6xLU17AdDTCFdhwHDn33K5zljeyzuZZFMVzAKti-0ClMlyx8cD_u8tXcg3R7lDRJEfxIEa2HBEQvr9PSfVN';
-  final FirebaseMessaging firebaseMessaging = FirebaseMessaging();
-  Future<Map<String, dynamic>> sendAndRetrieveMessage() async {
+
+
+  Future<Map<String, dynamic>> sendAndRetrieveMessage(String userToken) async {
     await firebaseMessaging.requestNotificationPermissions(
       const IosNotificationSettings(sound: true, badge: true, alert: true, provisional: false),
     );
@@ -48,7 +49,7 @@ class PushNotifications{
             'id': '1',
             'status': 'done'
           },
-          'to': 'cO6UNA3cTeSl0xVpCZQhY_:APA91bHkHrkMAc8I-s-QxFKFEqyAU2kYb4K6hgE-hLs6pw8qK7vfxV22akRP5yZ3LPdvMT_9QsWZVxJltqSGdtJobxmsA2a5_FJBb_EtjaLoehC3kb9SiZgb4NDHYNBPQAqEbu_xBON6',
+          'to': userToken,
         },
       ),
     );
@@ -63,5 +64,4 @@ class PushNotifications{
 
    return completer.future;
   }
-
 }

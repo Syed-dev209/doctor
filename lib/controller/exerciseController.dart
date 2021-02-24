@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:doctor/models/userDetails.dart';
+import 'package:doctor/service/pushNotificationService.dart';
 import 'package:path/path.dart' as Path;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:doctor/models/exerciseVideoModel.dart';
@@ -8,7 +9,7 @@ import 'package:provider/provider.dart';
 
 class CreateExercise {
   FirebaseFirestore _firestore = FirebaseFirestore.instance;
-
+  PushNotifications fcm =PushNotifications();
   Future<bool> uploadExercise(
       {Map<String, String> exerciseDetails, List<ExerciseVideo> exercises, List<
           String> patientsEmails}) async {
@@ -121,18 +122,20 @@ class CreateExercise {
   }
 
   Future<void> _sendToPatients(String email,String exrDocId) async {
-    String patId;
+
+    String patId,userToken;
     final user = await _firestore.collection('patients').where('email',isEqualTo: email).get();
     for(var data in user.docs)
       {
         patId=data.id;
+        userToken=data.data()['token'];
       }
     await _firestore.collection('patients').doc(patId).collection('exercises').add({
       'exerciseDocID':exrDocId,
       'completed':'false',
       'completionDate':'none'
     });
-
+    await fcm.sendAndRetrieveMessage(userToken);
   }
 
   Future<void> _addPatients(String email,String docID) async {

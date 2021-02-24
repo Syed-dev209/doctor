@@ -19,12 +19,26 @@ import 'package:firebase_messaging/firebase_messaging.dart';
       }
     }
 
+    Future<bool> deleteUser(String docId,String email,String pass)async{
+      try {
+        User user = _auth.currentUser;
+        AuthCredential credentials = EmailAuthProvider.credential(
+            email: email, password: pass);
+        final result = await user.reauthenticateWithCredential(credentials);
+        await result.user.delete();
+
+        await _firestore.collection('patients').doc(docId).delete();
+        return true;
+      }
+      catch(e)
+      {
+        return false;
+      }
+
+    }
+
     Future<bool> changePassword(String email) async{
       try {
-        // EmailAuthCredential credential = EmailAuthProvider.credential(
-        //     email: email, password: password);
-        // await _auth.currentUser.reauthenticateWithCredential(
-        //     credential);
         await _auth.sendPasswordResetEmail(email: email);
         return true;
       }
@@ -68,7 +82,8 @@ import 'package:firebase_messaging/firebase_messaging.dart';
             'height': height,
             'username': username,
             'weight': weight,
-            'token':fcmToken
+            'token':fcmToken,
+            'password':pass
           });
         });
         return true;
@@ -100,7 +115,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
     }
 
     getPatient(context,String Checkemail)async{
-      String username ,height,weight,disease,dob,email,docId;
+      String username ,height,weight,disease,dob,email,docId,password;
       final user = await _firestore.collection('patients').where('email', isEqualTo: Checkemail).get();
       for(var data  in user.docs)
         {
@@ -111,8 +126,8 @@ import 'package:firebase_messaging/firebase_messaging.dart';
           disease=data.data()['disease'];
           dob=data.data()['dateOBirth'];
           username=data.data()['username'];
-          print('at contorller date is :- $dob');
+          password=data.data()['password'];
         }
-      Provider.of<UserDetails>(context,listen: false).setUserDetails(email, username, height,weight,dob,disease,docId);
+      Provider.of<UserDetails>(context,listen: false).setUserDetails(email, username, height,weight,dob,disease,docId,password);
     }
   }

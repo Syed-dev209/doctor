@@ -222,7 +222,7 @@ class _SignInState extends State<SignIn> {
                                   style: TextStyle(
                                       color: Colors.white, fontSize: 19.0),
                                 ),
-                                color: Color(0xff674cfb),
+                                color: Color(0xff0f2594),
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(19),
                                 ),
@@ -317,13 +317,6 @@ class _SignInState extends State<SignIn> {
                                     }
                                   }
                                 }),
-                            RaisedButton(
-                              child: Text('send'),
-                                onPressed: ()async{
-                              PushNotifications fcm =PushNotifications();
-                             await fcm.sendAndRetrieveMessage();
-                            }
-                            ),
                             SizedBox(
                               width: 250,
                               height: 25,

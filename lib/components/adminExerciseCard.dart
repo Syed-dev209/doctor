@@ -6,7 +6,6 @@ import 'package:doctor/screens/exerciseDetails.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_progress_hud/flutter_progress_hud.dart';
 import 'package:provider/provider.dart';
-
 import '../controller/exerciseController.dart';
 import '../controller/exerciseController.dart';
 import 'alertBox.dart';

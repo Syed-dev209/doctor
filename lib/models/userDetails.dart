@@ -3,9 +3,9 @@ import 'package:provider/provider.dart';
 
 class UserDetails extends ChangeNotifier{
   String _email;
-  String _docId,_username,_height,_weight,_dob,_disease,_userExerDocId;
+  String _docId,_username,_height,_weight,_dob,_disease,_userExerDocId,_userPass;
 
-  setUserDetails(String email,String username,String height,String weight,String dob,String disease,String docId){
+  setUserDetails(String email,String username,String height,String weight,String dob,String disease,String docId,String pass){
     _email=email;
     _username=username;
     _height=height;
@@ -13,6 +13,7 @@ class UserDetails extends ChangeNotifier{
     _dob=dob;
     _disease=disease;
     _docId=docId;
+    _userPass=pass;
     print(_dob);
     notifyListeners();
   }
@@ -29,6 +30,7 @@ class UserDetails extends ChangeNotifier{
   }
   get getDocId{return _docId;}
   get getEmail{return _email;}
+  get getPassword{return _userPass;}
   get getUserName{return _username;}
   get getWeight{return _weight;}
   get getHeight{return _height;}

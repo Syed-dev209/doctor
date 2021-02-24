@@ -1,5 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:doctor/components/adminDrawer.dart';
+import 'package:doctor/components/alertBox.dart';
+import 'package:doctor/controller/createUser.dart';
 import 'package:doctor/register.dart';
 import 'package:doctor/screens/adminScreens/patientProfile.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +13,7 @@ class PatientList extends StatefulWidget {
 
 class _PatientListState extends State<PatientList> {
   FirebaseFirestore _firestore = FirebaseFirestore.instance;
+
 
   @override
   Widget build(BuildContext context) {
@@ -54,6 +57,8 @@ class _PatientListState extends State<PatientList> {
                   height: data.data()['height'],
                   weight: data.data()['weight'],
                   disease: data.data()['disease'],
+                  docId: data.id,
+                  password: data.data()['password'],
                 ));
               }
               return Column(
@@ -71,7 +76,7 @@ class _PatientListState extends State<PatientList> {
                       MaterialPageRoute(builder: (context) => Registrer()));
                 },
                 child: CircleAvatar(
-                  backgroundColor: Color(0xff674cfb),
+                  backgroundColor: Color(0xff0f2594),
                   radius: 30.0,
                   child: Icon(Icons.add, color: Colors.white, size: 30.0),
                 ),
@@ -79,13 +84,14 @@ class _PatientListState extends State<PatientList> {
             ),
           )
         ],
-      )),
+      ),),
     );
   }
 }
 
 class PatientTile extends StatelessWidget {
-  String name, email, dob, height, weight, disease;
+  String name, email, dob, height, weight, disease,docId,password;
+  CreateUser _user=CreateUser();
 
   PatientTile(
       {this.email,
@@ -93,7 +99,10 @@ class PatientTile extends StatelessWidget {
       this.dob,
       this.height,
       this.weight,
-      this.disease});
+      this.disease,
+      this.docId,
+      this.password
+      });
 
   @override
   Widget build(BuildContext context) {
@@ -134,7 +143,16 @@ class PatientTile extends StatelessWidget {
           fontSize: 18,
         ),
       ),
+      trailing: IconButton(icon: Icon(Icons.delete_outline),color: Colors.red,iconSize: 28.0,onPressed: ()async{
+        bool check = await _user.deleteUser(docId, email, password);
+        if(!check){
+          AlertBoxes alert = AlertBoxes();
+          alert.simpleAlertBox(context, Text('Something went wrong.'), Text('Please try again later.'), (){
+            Navigator.pop(context);
+          });
+        }
+      },),
     );
-    ;
+
   }
 }
