@@ -103,7 +103,7 @@ class _ExerciseDetailsState extends State<ExerciseDetails> {
                                 RaisedButton(
                                     padding: EdgeInsets.symmetric(
                                         horizontal: 70, vertical: 11),
-                                    color: Color(0xff674cfb),
+                                    color: Color(0xff0f2594),
                                     child: Text(
                                       'Start',
                                       style: TextStyle(

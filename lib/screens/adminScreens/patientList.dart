@@ -129,7 +129,7 @@ class PatientTile extends StatelessWidget {
           name[0],
           style: TextStyle(color: Colors.white, fontSize: 18.0),
         ),
-        backgroundColor: Color(0xff674cfb),
+        backgroundColor: Color(0xff0f2594),
       ),
       title: Text(
         name,

@@ -38,7 +38,7 @@ class _DraweritemState extends State<Draweritem> {
                   color: Colors.white
                 ),),
                 decoration: BoxDecoration(
-                    color: Color(0xff674cfb),
+                    color:Color(0xff0f2594),
                     borderRadius: BorderRadius.only(bottomRight: Radius.circular(50.0),topRight: Radius.circular(50.0))
                 ),
               ),

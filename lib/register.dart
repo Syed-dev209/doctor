@@ -32,9 +32,9 @@ class _RegistrerState extends State<Registrer> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         title: Text(
-          'Register',
+          'Patient Registration',
           style: TextStyle(
-              fontSize: 30, fontWeight: FontWeight.w500, color: Colors.black87),
+              fontSize: 30, fontWeight: FontWeight.w500, color: Colors.black),
         ),
         elevation: 0,
         backgroundColor: Colors.white,
@@ -296,12 +296,12 @@ class _RegistrerState extends State<Registrer> {
                         SizedBox(height: deviceHeight * 0.2),
                         RaisedButton(
                             padding:
-                            EdgeInsets.symmetric(horizontal: 40, vertical: 20),
+                            EdgeInsets.symmetric(horizontal: 40, vertical: 10),
                             child: Text(
                               'Register',
                               style: TextStyle(color: Colors.white, fontSize: 20.0),
                             ),
-                            color: Color(0xff674cfb),
+                            color: Color(0xff0f2594),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(19),
                             ),

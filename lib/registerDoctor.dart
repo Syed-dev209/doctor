@@ -23,9 +23,15 @@ class _RegisterDoctorState extends State<RegisterDoctor> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text('Doctor Registration'),
+        iconTheme: IconThemeData(
+          color: Colors.black
+        ),
+        title: Text('Doctor Registration',style: TextStyle(color: Colors.black, fontSize: 30, fontWeight: FontWeight.w500),),
         centerTitle: true,
+        backgroundColor: Colors.white,
+        elevation: 0,
       ),
       body: ProgressHUD(
         child: Builder(
@@ -156,12 +162,12 @@ class _RegisterDoctorState extends State<RegisterDoctor> {
 
                         RaisedButton(
                             padding:
-                            EdgeInsets.symmetric(horizontal: 110, vertical: 20),
+                            EdgeInsets.symmetric(horizontal: 40, vertical: 10),
                             child: Text(
                               'Register',
                               style: TextStyle(color: Colors.white, fontSize: 19.0),
                             ),
-                            color: Color(0xff674cfb),
+                            color: Color(0xff0f2594),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(19),
                             ),

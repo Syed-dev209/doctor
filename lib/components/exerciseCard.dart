@@ -131,7 +131,7 @@ class _ExerciseCardState extends State<ExerciseCard> {
                         style: TextStyle(color: Colors.white, fontSize: 22.0),
                       ),
                       Chip(
-                        backgroundColor: Color(0xff674cfb),
+                        backgroundColor: Color(0xff0f2594),
                         label: Text(
                           'Start',
                           style: TextStyle(color: Colors.white),

@@ -58,7 +58,7 @@ class _ExerciseDetailsAdminState extends State<ExerciseDetailsAdmin> {
                     ],
                 ),
                 Divider(
-                  color: Color(0xff674cfb),
+                  color: Color(0xff0f2594),
                   thickness: 2,
                 ),
                 Text('Description',style: TextStyle(
@@ -123,7 +123,7 @@ class _ExerciseDetailsAdminState extends State<ExerciseDetailsAdmin> {
                       color: Colors.black38),
                 ),
                 Divider(
-                  color: Color(0xff674cfb),
+                  color:Color(0xff0f2594),
                   thickness: 2,
                 ),
                 SizedBox(

@@ -11,7 +11,7 @@ class PatientProfile extends StatelessWidget {
           color: Colors.white
         ),),
         centerTitle: true,
-        backgroundColor: Color(0xff674cfb),
+        backgroundColor: Color(0xff0f2594),
         iconTheme: IconThemeData(
           color: Colors.white
         ),

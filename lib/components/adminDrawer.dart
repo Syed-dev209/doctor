@@ -38,7 +38,7 @@ class _AdminDrawerState extends State<AdminDrawer> {
                   color: Colors.white
                 ),),
                 decoration: BoxDecoration(
-                    color: Color(0xff674cfb),
+                    color:Color(0xff0f2594),
                     borderRadius: BorderRadius.only(
                         bottomRight: Radius.circular(55.0),
                         topRight: Radius.circular(55.0))),

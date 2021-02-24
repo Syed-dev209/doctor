@@ -76,7 +76,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                                 'Change',
                                 style: TextStyle(color: Colors.white, fontSize: 20.0),
                               ),
-                              color: Color(0xff674cfb),
+                              color:Color(0xff0f2594),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(19),
                               ),

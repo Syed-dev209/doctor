@@ -37,7 +37,7 @@ class AlertBoxes{
                       color: Colors.white,
                       fontSize: 18.0
                     ),),
-                    color: Color(0xff674cfb),
+                    color: Color(0xff0f2594),
                     onPressed: btn1OnPressed,
                   ),
                   OutlineButton(
@@ -45,7 +45,7 @@ class AlertBoxes{
                       borderRadius: BorderRadius.circular(10.0),
                     ),
                       child: Text(btn2txt,style: TextStyle(
-                        color: Color(0xff674cfb),
+                        color:Color(0xff0f2594),
                           fontSize: 18.0
                       ),),
                       onPressed: btn2OnPressed

@@ -11,8 +11,8 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 
     Future<bool> logInUser(context,String email, String password) async {
       try {
-        await _auth.signInWithEmailAndPassword(email: email, password: password);
         await getPatient(context, email);
+        await _auth.signInWithEmailAndPassword(email: email, password: password);
         return true;
       } catch (e) {
         return false;
@@ -21,19 +21,14 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 
     Future<bool> deleteUser(String docId,String email,String pass)async{
       try {
-        User user = _auth.currentUser;
-        AuthCredential credentials = EmailAuthProvider.credential(
-            email: email, password: pass);
-        final result = await user.reauthenticateWithCredential(credentials);
-        await result.user.delete();
-
+        print(email+' '+pass);
         await _firestore.collection('patients').doc(docId).delete();
         return true;
       }
-      catch(e)
-      {
-        return false;
-      }
+       catch(e)
+       {
+         return false;
+       }
 
     }
 

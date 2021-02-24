@@ -34,7 +34,7 @@ class DropDowns{
               print(value);
               onChanged(data[value]);
             },
-            itemExtent: 32.0,
+            itemExtent: 40.0,
             children: [
               for (String i in data)
                 DropdownMenuItem(

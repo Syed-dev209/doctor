@@ -130,7 +130,7 @@ CreateExercise _exercise=CreateExercise();
                             style: TextStyle(color: Colors.white, fontSize: 22.0),
                           ),
                           Chip(
-                            backgroundColor: Color(0xff674cfb),
+                            backgroundColor: Color(0xff0f2594),
                             label: Text(
                               'Check',
                               style: TextStyle(color: Colors.white),

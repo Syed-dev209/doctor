@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         theme: ThemeData(
           brightness: Brightness.light,
-          primaryColor: Color(0xff674cfb),
+          primaryColor: Color(0xff0f2594),
           accentColor: Colors.black
         ),
         home: SignIn(),

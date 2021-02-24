@@ -92,7 +92,7 @@ class ExerciseListTile extends StatelessWidget {
         height: 50.0,
         width: 50.0,
         decoration: BoxDecoration(
-          color: Color(0xff674cfb),
+          color: Color(0xff0f2594),
           borderRadius: BorderRadius.circular(5.0),
         ),
         child: Center(

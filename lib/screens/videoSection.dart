@@ -128,7 +128,7 @@ class _VideoSectionState extends State<VideoSection> {
                       fontSize: 18,
                         color: Colors.white
                     ),),
-                    color: Color(0xff674cfb),
+                    color: Color(0xff0f2594),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(22)),
                     onPressed: () {
