@@ -77,7 +77,7 @@ FirebaseFirestore _firestore = FirebaseFirestore.instance;
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(22)),
                             onPressed: ()async {
-                              if(Provider.of<ExerciseDescription>(context,listen: false).getPatientsList[0]!=null) {
+                              if(Provider.of<ExerciseDescription>(context,listen: false).getPatientsList.first!=null) {
                                 _alert = AlertBoxes();
                                 final progress = ProgressHUD.of(context);
                                 _create = CreateExercise();
