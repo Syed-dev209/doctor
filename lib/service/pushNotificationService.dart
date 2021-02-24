@@ -28,6 +28,7 @@ class PushNotifications{
 
 
   Future<Map<String, dynamic>> sendAndRetrieveMessage(String userToken) async {
+    print('user tokrn in method $userToken');
     await firebaseMessaging.requestNotificationPermissions(
       const IosNotificationSettings(sound: true, badge: true, alert: true, provisional: false),
     );
@@ -40,8 +41,8 @@ class PushNotifications{
       body: jsonEncode(
         <String, dynamic>{
           'notification': <String, dynamic>{
-            'body': 'this is a body',
-            'title': 'this is a title'
+            'body': 'Get started with your exercise.',
+            'title': 'New exercise is uploaded'
           },
           'priority': 'high',
           'data': <String, dynamic>{
@@ -61,7 +62,7 @@ class PushNotifications{
        completer.complete(message);
      },
    );
-
+print('notiff completed');
    return completer.future;
   }
 }

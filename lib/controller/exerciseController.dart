@@ -13,9 +13,7 @@ class CreateExercise {
   Future<bool> uploadExercise(
       {Map<String, String> exerciseDetails, List<ExerciseVideo> exercises, List<
           String> patientsEmails}) async {
-    try {
-      print(exercises);
-      print(patientsEmails);
+    //try {
       DocumentReference ref = await _firestore.collection('exercises').add(
           exerciseDetails);
       String docId = ref.id;
@@ -28,11 +26,12 @@ class CreateExercise {
         await _addPatients(patientsEmails[i], docId);
         await _sendToPatients(patientsEmails[i], docId);
       }
+      print('send to patients');
       return true;
-    }
-    catch(e){
-      return false;
-    }
+   // }
+   // catch(e){
+    //  return false;
+   // }
   }
   Future<bool> deleteExercise(String docId)async{
     try {
@@ -135,7 +134,8 @@ class CreateExercise {
       'completed':'false',
       'completionDate':'none'
     });
-    await fcm.sendAndRetrieveMessage(userToken);
+    print(userToken);
+    fcm.sendAndRetrieveMessage(userToken);
   }
 
   Future<void> _addPatients(String email,String docID) async {
@@ -149,7 +149,6 @@ class CreateExercise {
 
   Future<void> _addExercise(ExerciseVideo exer, String docId) async {
     String videoUrl = await _uploadExerciseVideo(exer.video);
-    print(videoUrl);
     await _firestore.collection('exercises').doc(docId).collection(
         'exerciseList').doc().set({
       'videoUrl': videoUrl,

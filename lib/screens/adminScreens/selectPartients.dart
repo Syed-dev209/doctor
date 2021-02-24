@@ -72,49 +72,70 @@ FirebaseFirestore _firestore = FirebaseFirestore.instance;
                         alignment: Alignment.bottomCenter,
                         child: RaisedButton(
                             padding: EdgeInsets.symmetric(horizontal: 55),
-                            child: Text('Send Exercise'),
+                            child: Text('Send Exercise',style: TextStyle(color: Colors.white),),
                             color: Theme.of(context).primaryColor,
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(22)),
                             onPressed: ()async {
-                              _alert = AlertBoxes();
-                              final progress = ProgressHUD.of(context);
-                              _create = CreateExercise();
-                              progress.showWithText(
-                                  'Uploading\nPlease wait...');
-                              bool check = await _create.uploadExercise(
-                                  exerciseDetails:
-                                  Provider.of<ExerciseDescription>(
-                                      context,
-                                      listen: false)
-                                      .getExerciseDetails,
-                                  exercises:
-                                  Provider.of<ExerciseDescription>(
-                                      context,
-                                      listen: false)
-                                      .getExercisesList,
-                                  patientsEmails:
-                                  Provider.of<ExerciseDescription>(
-                                      context,
-                                      listen: false)
-                                      .getPatientsList);
+                              if(Provider.of<ExerciseDescription>(context,listen: false).getPatientsList[0]!=null) {
+                                _alert = AlertBoxes();
+                                final progress = ProgressHUD.of(context);
+                                _create = CreateExercise();
+                                progress.showWithText(
+                                    'Uploading\nPlease wait...');
+                                bool check = await _create.uploadExercise(
+                                    exerciseDetails:
+                                    Provider
+                                        .of<ExerciseDescription>(
+                                        context,
+                                        listen: false)
+                                        .getExerciseDetails,
+                                    exercises:
+                                    Provider
+                                        .of<ExerciseDescription>(
+                                        context,
+                                        listen: false)
+                                        .getExercisesList,
+                                    patientsEmails:
+                                    Provider
+                                        .of<ExerciseDescription>(
+                                        context,
+                                        listen: false)
+                                        .getPatientsList);
 
-                              if(check){
-                                progress.dismiss();
-                                _alert=AlertBoxes();
-                                _alert.simpleAlertBox(context, Text('Congratulations'), Text('Exercise has been uploaded and send to patients.'), (){
-                                  Navigator.push(context, MaterialPageRoute(builder: (context)=>AdminDashboard()));
-                                });
+                                if (check) {
+                                  progress.dispose();
+                                  _alert = AlertBoxes();
+                                  _alert.simpleAlertBox(
+                                      context, Text('Congratulations'), Text(
+                                      'Exercise has been uploaded and send to patients.'), () {
+                                    Navigator.push(context, MaterialPageRoute(
+                                        builder: (context) =>
+                                            AdminDashboard()));
+                                  });
+                                }
+                                else {
+                                  progress.dispose();
+                                  _alert = AlertBoxes();
+                                  _alert.simpleAlertBox(context, Text('Error'),
+                                      Text('Please try again later.'), () {
+                                        Navigator.pop(context);
+                                      });
+                                }
                               }
-
+                              else{
+                                _alert = AlertBoxes();
+                                _alert.simpleAlertBox(context, Text('Error'),
+                                    Text('Please select patients to proceed.'), () {
+                                      Navigator.pop(context);
+                                    });
+                              }
                             }),
                       )
 
                     ],
                   ),
                 )
-
-
             );
           },
         ),
@@ -160,6 +181,6 @@ class _PatientTileState extends State<PatientTile> {
         height: 1,
         width: 1,
       ),
-    );;
+    );
   }
 }
